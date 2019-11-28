@@ -32,4 +32,7 @@ target 'expoMinimalProject' do
 
   use_unimodules!
 
+
+  pod 'RNDeviceInfo', :path => '../node_modules/react-native-device-info'
+
 end
