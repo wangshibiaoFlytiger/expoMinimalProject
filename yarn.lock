@@ -2182,6 +2182,12 @@ expo-constants@~7.0.0:
   dependencies:
     ua-parser-js "^0.7.19"
 
+expo-device@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npm.taobao.org/expo-device/download/expo-device-1.0.0.tgz#fbb96b4a35d586e8b70157b7e518b6ed14034233"
+  dependencies:
+    ua-parser-js "^0.7.19"
+
 expo-file-system@~7.0.0:
   version "7.0.0"
   resolved "https://registry.npm.taobao.org/expo-file-system/download/expo-file-system-7.0.0.tgz#ac98233b18774cce299fffd9451f08f21b116564"
