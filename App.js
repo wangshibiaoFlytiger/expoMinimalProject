@@ -12,8 +12,9 @@ export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <Text>1. 调用expo的api</Text>
         <ExpoDeviceInfoView/>
-        <Text>下面是调用第三方native库</Text>
+        <Text>2. 调用第三方native库</Text>
         <NativeDeviceInfoView/>
       </View>
     );

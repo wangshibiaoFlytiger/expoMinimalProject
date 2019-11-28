@@ -1,8 +1,6 @@
 import React from "react";
 import * as Device from 'expo-device';
-import {Text, ScrollView} from "react-native";
-import View from "react-native-web/dist/exports/View";
-
+import {Text, View} from "react-native";
 
 class ExpoDeviceInfoView extends React.Component{
     state = {
@@ -15,10 +13,10 @@ class ExpoDeviceInfoView extends React.Component{
 
     render() {
         return (
-            <ScrollView>
+            <View>
                 <Text>brand:{Device.brand}</Text>
                 <Text>totalMem:{Device.totalMemory}</Text>
-            </ScrollView>
+            </View>
         );
     }
 }
