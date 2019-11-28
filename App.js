@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import ExpoDeviceInfoView from "./component/ExpoDeviceInfoView";
 import NativeDeviceInfoView from "./component/NativeDeviceInfoView";
+import ExpoVideoPlayer from "./component/ExpoVideoPlayer";
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -16,6 +17,8 @@ export default class App extends Component {
         <ExpoDeviceInfoView/>
         <Text>2. 调用第三方native库</Text>
         <NativeDeviceInfoView/>
+        <Text>3. expo 播放器</Text>
+        <ExpoVideoPlayer/>
       </View>
     );
   }
