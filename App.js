@@ -3,7 +3,7 @@ import { Platform, StyleSheet, Text, View, Button } from 'react-native';
 import ExpoDeviceInfoView from "./component/ExpoDeviceInfoView";
 import NativeDeviceInfoView from "./component/NativeDeviceInfoView";
 import ExpoVideoPlayer from "./component/ExpoVideoPlayer";
-import {createStackNavigator} from "react-navigation-stack";
+import { createBottomTabNavigator } from 'react-navigation-tabs';
 import {createAppContainer} from "react-navigation";
 
 const instructions = Platform.select({
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
 });
 
 // 定义导航菜单
-const Navigator = createStackNavigator({
+const Navigator = createBottomTabNavigator({
     Home: {
         screen: App,
         navigationOptions: {
