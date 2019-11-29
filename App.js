@@ -6,11 +6,6 @@ import ExpoVideoPlayer from "./component/ExpoVideoPlayer";
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import {createAppContainer} from "react-navigation";
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android: '发斯蒂芬Double tap R on your keyboard to reload,\n' + 'Shake or press menu button for dev menu',
-});
-
 class App extends Component {
     /**
      * 跳转到指定页面
