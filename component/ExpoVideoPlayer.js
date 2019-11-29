@@ -3,11 +3,6 @@ import {View} from "react-native";
 import {Video} from "expo-av";
 
 class ExpoVideoPlayer extends React.Component {
-    // 导航参数
-    static navigationOptions = {
-        title: '调用expo的播放器',
-    };
-
     constructor(props) {
         super(props);
     }

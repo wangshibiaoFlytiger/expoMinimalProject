@@ -7,11 +7,6 @@ class NativeDeviceInfoView extends React.Component {
         deviceInfo: {},
     };
 
-    // 导航参数
-    static navigationOptions = {
-        title: '调用native module的api',
-    };
-
     constructor(props) {
         super(props);
     }

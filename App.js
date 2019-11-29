@@ -12,11 +12,6 @@ const instructions = Platform.select({
 });
 
 class App extends Component {
-    // 导航参数
-    static navigationOptions = {
-        title: '主页',
-    };
-
     /**
      * 跳转到指定页面
      */
@@ -46,10 +41,29 @@ const styles = StyleSheet.create({
 
 // 定义导航菜单
 const Navigator = createStackNavigator({
-    Home: { screen: App },
-    ExpoDeviceInfoView: { screen: ExpoDeviceInfoView },
-    NativeDeviceInfoView: { screen: NativeDeviceInfoView },
-    ExpoVideoPlayer: { screen: ExpoVideoPlayer },
+    Home: {
+        screen: App,
+        navigationOptions: {
+            title: "主页"
+        }},
+    ExpoDeviceInfoView: {
+        screen: ExpoDeviceInfoView,
+        navigationOptions: {
+            title: "调用expo的api"
+        }
+    },
+    NativeDeviceInfoView: {
+        screen: NativeDeviceInfoView,
+        navigationOptions: {
+            title: "调用native module的api"
+        }
+    },
+    ExpoVideoPlayer: {
+        screen: ExpoVideoPlayer,
+        navigationOptions: {
+            title: "调用expo的播放器3"
+        }
+    },
 });
 
 export default createAppContainer(Navigator);
