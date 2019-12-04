@@ -35,4 +35,6 @@ target 'expoMinimalProject' do
 
   pod 'RNDeviceInfo', :path => '../node_modules/react-native-device-info'
 
+  pod 'react-native-webview', :path => '../node_modules/react-native-webview'
+
 end

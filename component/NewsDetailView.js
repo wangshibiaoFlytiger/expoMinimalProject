@@ -1,6 +1,7 @@
 import React from 'react';
 import {Text, View} from "react-native";
 import {getNewsById} from "../api/newsApi";
+import { WebView } from 'react-native-webview';
 
 /**
  * 新闻详情页面
@@ -32,13 +33,18 @@ export default class NewsDetailView extends React.Component{
     }
 
     render(){
-        console.log("render", this.state.news);
+        // 使用es6的模板字符串语法进行字符串和变量的拼接
+        let html = `
+        <h1>${this.state.news.title}</h1>
+        <div>发布时间: ${this.state.news.publishTime}</div>
+        <div>${this.state.news.content}</div>
+        `;
+
         return (
-            <View>
-                <Text>{this.state.news.title}</Text>
-                <Text>{this.state.news.publishTime}</Text>
-                <Text>{this.state.news.content}</Text>
-            </View>
+            <WebView
+                originWhitelist={['*']}
+                source={{ html: html }}
+            />
         );
     }
 }
