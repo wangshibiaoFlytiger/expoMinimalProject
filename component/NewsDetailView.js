@@ -35,8 +35,11 @@ export default class NewsDetailView extends React.Component{
     render(){
         // 使用es6的模板字符串语法进行字符串和变量的拼接
         let html = `
-        <h1>${this.state.news.title}</h1>
-        <div>发布时间: ${this.state.news.publishTime}</div>
+        <h1 style="text-align: center">${this.state.news.title}</h1>
+        <div>
+            <span>${this.state.news.author}          </span>
+            <span>${this.state.news.publishTime}</span>
+        </div>
         <div>${this.state.news.content}</div>
         `;
 
