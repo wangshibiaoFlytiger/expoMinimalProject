@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View} from "react-native";
+import {Text, View, StyleSheet} from "react-native";
 import {getNewsById} from "../api/newsApi";
 import { WebView } from 'react-native-webview';
 
@@ -41,10 +41,18 @@ export default class NewsDetailView extends React.Component{
         `;
 
         return (
-            <WebView
-                originWhitelist={['*']}
-                source={{ html: html }}
-            />
+            <View style={styles.container}>
+                <WebView
+                    originWhitelist={['*']}
+                    source={{ html: html }}
+                />
+            </View>
         );
     }
 }
+
+let styles = StyleSheet.create({
+    container: {
+        flex: 1
+    }
+});
