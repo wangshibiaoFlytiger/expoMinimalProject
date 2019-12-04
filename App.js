@@ -5,6 +5,9 @@ import NativeDeviceInfoView from "./component/NativeDeviceInfoView";
 import ExpoVideoPlayer from "./component/ExpoVideoPlayer";
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import {createAppContainer} from "react-navigation";
+import NewsListView from "./component/NewsListView";
+import {createStackNavigator} from "react-navigation-stack";
+import NewsDetailView from "./component/NewsDetailView";
 
 class App extends Component {
     /**
@@ -34,12 +37,39 @@ const styles = StyleSheet.create({
   },
 });
 
-// 定义导航菜单
+// 定义新闻页面导航菜单
+const newsNavigator = createStackNavigator({
+    NewsList: {
+        screen: NewsListView,
+        navigationOptions: {
+            title: "新闻列表"
+        }
+    },
+    NewsDetail: {
+        screen: NewsDetailView,
+        navigationOptions: {
+            title: "新闻详情"
+        }
+    }
+})
+
+// 定义主导航菜单
 const Navigator = createBottomTabNavigator({
     Home: {
         screen: App,
         navigationOptions: {
             title: "主页",
+            tabBarIcon: ({tintColor, focused}) => (
+                <Image style={{ width: 24, height: 24 }}
+                source={{ uri: 'http://img.taopic.com/uploads/allimg/120712/201731-120G2144H051.jpg' }}
+                />
+            ),
+        }},
+    News: {
+        // 嵌套新闻页面导航
+        screen: newsNavigator,
+        navigationOptions: {
+            title: "新闻",
             tabBarIcon: ({tintColor, focused}) => (
                 <Image style={{ width: 24, height: 24 }}
                 source={{ uri: 'http://img.taopic.com/uploads/allimg/120712/201731-120G2144H051.jpg' }}
