@@ -4940,6 +4940,10 @@ react-native-reanimated@^1.4.0:
   version "1.4.0"
   resolved "https://registry.npm.taobao.org/react-native-reanimated/download/react-native-reanimated-1.4.0.tgz#7f1acbf9be08492d834f512700570978052be2f9"
 
+react-native-refresh-list-view@^1.0.10:
+  version "1.0.10"
+  resolved "https://registry.npm.taobao.org/react-native-refresh-list-view/download/react-native-refresh-list-view-1.0.10.tgz#4f801e8526f9028d4273f04283506f7a1eda8a0b"
+
 react-native-safe-area-view@^0.14.1, react-native-safe-area-view@^0.14.6:
   version "0.14.8"
   resolved "https://registry.npm.taobao.org/react-native-safe-area-view/download/react-native-safe-area-view-0.14.8.tgz#ef33c46ff8164ae77acad48c3039ec9c34873e5b"

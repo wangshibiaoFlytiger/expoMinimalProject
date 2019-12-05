@@ -1,6 +1,7 @@
 import React from 'react';
 import {FlatList, Text, TouchableOpacity, View, Image} from "react-native";
 import {findNewsList} from "../api/newsApi";
+import RefreshListView, {RefreshState} from "react-native-refresh-list-view";
 
 /**
  * 封面图片列表组件
@@ -37,7 +38,7 @@ export default class NewsListView extends React.Component{
     state = {
         newsList: [],
 
-        refreshing: false
+        refreshState: RefreshState.Idle,
     }
 
     constructor(props){
@@ -45,7 +46,11 @@ export default class NewsListView extends React.Component{
     }
 
    async componentWillMount(): void {
-       await this.findNewsList();
+       let newsList = await this.findNewsList();
+       console.log("componentWillMount", newsList);
+       this.setState({
+           newsList: newsList
+       });
    }
 
     /**
@@ -61,6 +66,30 @@ export default class NewsListView extends React.Component{
 
         let resp = await findNewsList(params);
         let newsList = resp.data.data;
+        return Promise.resolve(newsList);
+    }
+
+    /**
+     * 补充顶部刷新的数据
+     */
+    async supplyHeaderRefreshData(){
+        let newsList = await this.findNewsList();
+        // 新数据补充到列表头部
+        newsList = newsList.concat(this.state.newsList);
+        console.log("supplyHeaderRefreshData", this.state.newsList, newsList);
+        this.setState({
+            newsList: newsList
+        });
+    }
+
+    /**
+     * 补充底部刷新的数据
+     */
+    async supplyFooterRefreshData(){
+        let newsList = await this.findNewsList();
+        // 新数据补充到列表尾部
+        newsList = this.state.newsList.concat(newsList);
+        console.log("supplyFooterRefreshData", newsList);
         this.setState({
             newsList: newsList
         });
@@ -100,28 +129,36 @@ export default class NewsListView extends React.Component{
      * @param item
      */
     buildItemKey(item){
-        console.log("buildItemKey", item.id)
         return item.id;
     }
 
     /**
-     * 下拉刷新事件
+     * 顶部刷新事件
      */
-    async onRefresh(){
-        await this.findNewsList();
+    async onHeaderRefresh(){
+        console.log("顶部刷新");
+        await this.supplyHeaderRefreshData();
+    }
+
+    /**
+     * 底部刷新事件
+     */
+    async onFooterRefresh(){
+        console.log("底部刷新");
+        await this.supplyFooterRefreshData();
     }
 
     render(){
         console.log("render", this.state.newsList);
         return (
-            <FlatList
+            <RefreshListView
                 data={this.state.newsList}
                 renderItem={this.renderItem.bind(this)}
                 keyExtractor={this.buildItemKey.bind(this)}
 
-                // 下拉刷新相关
-                onRefresh={this.onRefresh.bind(this)}
-                refreshing={this.state.refreshing}
+                refreshState={this.state.refreshState}
+                onHeaderRefresh={this.onHeaderRefresh.bind(this)}
+                onFooterRefresh={this.onFooterRefresh.bind(this)}
             />
         );
     }
