@@ -35,7 +35,9 @@ function CoverListComponent(props){
  */
 export default class NewsListView extends React.Component{
     state = {
-        newsList: []
+        newsList: [],
+
+        refreshing: false
     }
 
     constructor(props){
@@ -102,6 +104,13 @@ export default class NewsListView extends React.Component{
         return item.id;
     }
 
+    /**
+     * 下拉刷新事件
+     */
+    async onRefresh(){
+        await this.findNewsList();
+    }
+
     render(){
         console.log("render", this.state.newsList);
         return (
@@ -109,6 +118,10 @@ export default class NewsListView extends React.Component{
                 data={this.state.newsList}
                 renderItem={this.renderItem.bind(this)}
                 keyExtractor={this.buildItemKey.bind(this)}
+
+                // 下拉刷新相关
+                onRefresh={this.onRefresh.bind(this)}
+                refreshing={this.state.refreshing}
             />
         );
     }
