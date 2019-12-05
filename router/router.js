@@ -12,14 +12,18 @@ import NewsDetailView from "../component/NewsDetailView";
 const newsNavigator = createStackNavigator({
     NewsList: {
         screen: NewsListView,
-        navigationOptions: {
-            title: "新闻列表"
+        navigationOptions: () => {
+            return {
+                title: '新闻列表页',
+            };
         }
     },
     NewsDetail: {
         screen: NewsDetailView,
-        navigationOptions: {
-            title: "新闻详情"
+        navigationOptions: ({navigation}) => {
+            return {
+                title: navigation.getParam('title'),
+            };
         }
     }
 })
