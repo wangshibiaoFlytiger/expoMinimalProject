@@ -2,6 +2,7 @@ import React from 'react';
 import {FlatList, Text, TouchableOpacity, View, Image} from "react-native";
 import {findNewsList} from "../api/newsApi";
 import RefreshListView, {RefreshState} from "react-native-refresh-list-view";
+import _ from "lodash";
 
 /**
  * 封面图片列表组件
@@ -129,7 +130,9 @@ export default class NewsListView extends React.Component{
      * @param item
      */
     buildItemKey(item){
-        return item.id;
+        let itemKey = item.id + _.random(0, 100000);
+        console.log("buildItemKey", itemKey);
+        return itemKey;
     }
 
     /**
