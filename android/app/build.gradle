@@ -113,10 +113,24 @@ android {
             include "armeabi-v7a", "x86", "arm64-v8a", "x86_64"
         }
     }
+
+//     签名配置(生成签名文件的命令为 keytool -genkey -v -alias mimi -keyalg RSA -keysize 1024 -keypass 123456 -dname "cn=,ou=,o=,l=,st=,c=" -keystore ./signFile.jks -storepass 123456 -validity 3650)
+    signingConfigs {
+            release {
+                storeFile file('signFile.jks')
+                storePassword '123456'
+                keyAlias 'mimi'
+                keyPassword '123456'
+            }
+    }
+
     buildTypes {
         release {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+
+//             签名配置
+            signingConfig signingConfigs.release
         }
     }
     // applicationVariants are e.g. debug, release
