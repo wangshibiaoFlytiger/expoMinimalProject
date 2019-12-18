@@ -1,0 +1,26 @@
+项目原始仓库地址: https://github.com/wangshibiaoFlytiger/expoMinimalProject
+#若本项目给您带来收获, 还请您动动小拇指,右上角给点个赞哈,万分感谢哈哈!!!
+
+react native app开发脚手架
+可以作为react native app的开发项目模板
+
+一. 概要
+为基于expo bare模式的react native app项目, 已实现的功能以及用到的技术如下
+1. 已实现通用的app底部菜单
+2. 用到了tab类型的导航(即底部菜单)和stack类型
+3. 支持读取设备信息
+4. 已设置签名信息
+5. 支持列表页下拉刷新和上滑加载
+6. 使用webview渲染html内容
+7. 可使用所有原生的react native第三方组件以及expo提供的可选组件
+
+二. 本地调试android步骤
+yarn start
+yarn android
+
+三. 打包
+cd ./android
+./gradlew clean build
+
+四. 注意事项
+expo版本和react native版本有严格的版本对应关系, 请查阅expo官方文档
